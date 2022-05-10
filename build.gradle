@@ -1,0 +1,53 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.4.0"
+}
+
+version = "0.1"
+group = "hello.paris.jug.at.agorapulse"
+
+repositories {
+    mavenCentral()
+    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("io.micronaut:micronaut-validation")
+    runtimeOnly("com.agorapulse:micronaut-console:2.0.1-micronaut-3.0")
+    runtimeOnly("org.codehaus.groovy:groovy")
+    implementation('com.agorapulse:micronaut-worker:1.2.0-micronaut-3.0')
+    implementation('io.micronaut.reactor:micronaut-reactor')
+    implementation('com.agorapulse:micronaut-permissions:1.0.2-micronaut-3.0')
+    annotationProcessor 'com.agorapulse:micronaut-amazon-awssdk-dynamodb:1.7.2-micronaut-3.0'
+    implementation 'com.agorapulse:micronaut-amazon-awssdk-dynamodb:1.7.2-micronaut-3.0'
+
+    testImplementation("com.agorapulse:gru-micronaut:1.0.3")
+    testImplementation 'com.agorapulse:micronaut-amazon-awssdk-integration-testing:1.7.2-micronaut-3.0'
+}
+
+
+application {
+    mainClass.set("hello.paris.jug.at.agorapulse.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("hello.paris.jug.at.agorapulse.*")
+        annotations("com.agorapulse.*")
+    }
+}
+
+
+

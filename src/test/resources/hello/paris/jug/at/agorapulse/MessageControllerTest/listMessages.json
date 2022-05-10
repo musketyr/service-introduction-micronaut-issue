@@ -1,0 +1,7 @@
+[
+  {
+    "author": "vlad",
+    "body": "Salut, Paris!",
+    "created": "${json-unit.matches:isoDateNow}"
+  }
+]

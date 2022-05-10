@@ -1,0 +1,7 @@
+POST {{host}}/console/execute/result
+Content-Type: text/groovy
+Accept: text/plain
+X-Console-Verify: {{cookie}}
+
+// language=groovy
+emailDigestJobSendEmail('cedric@agorapulse.com')
