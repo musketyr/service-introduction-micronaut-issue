@@ -45,7 +45,7 @@ micronaut {
     processing {
         incremental(true)
         annotations("hello.paris.jug.at.agorapulse.*")
-        annotations("com.agorapulse.*")
+        // annotations("com.agorapulse.*")
     }
 }
 
